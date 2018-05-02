@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
-         <swiper :options="swiperOption">
+        <!-- 当swiperList是空数组时，swiper不被创建，只有当数据请求到位时，才创建swiper -->
+         <swiper :options="swiperOption" v-if="showSwiper"> 
             <swiper-slide v-for="item of swiperList" :key="item.id">
                 <img class="swiper-img" :src="item.imgUrl">
             </swiper-slide>
@@ -12,6 +13,9 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props: {
+        swiperList: Array
+  },
   data() {
     return {
       swiperOption: {
@@ -19,16 +23,13 @@ export default {
           loop: true,
           autoplay: 5000,
           speed: 800
-      },
-    
-        swiperList: [{
-            id: '0001',
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1801/1a/94428c6dea109402.jpg_640x200_2cf590d8.jpg"
-        },{
-            id: '0002',
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1802/42/7c92b9a381e46402.jpg_640x200_1cdce2a4.jpg"
-        }]
+      }
     }
+  },
+  computed: {
+      showSwiper () {
+          return this.swiperList.length
+      }
   }
 };
 </script>

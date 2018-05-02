@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon"  v-for="item of page" :key="item.id">
           <div class="icon-img">
@@ -74,7 +74,10 @@ export default {
           desc: "一日游"
         },
         
-      ]
+      ],
+      swiperOption: {
+        autoplay: false
+      }
     };
   },
   computed: {
@@ -102,6 +105,7 @@ export default {
   height: 0;
   padding-bottom: 50%;
   overflow: hidden;
+  margin-top: .2rem;
 
   // background: #ccc
   .icon 

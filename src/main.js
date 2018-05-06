@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 引入swiper插件
-
+import store from './store/index' // 引入Vuex中的store仓库
 import fastClick from 'fastClick' // 解决移动端的300毫秒点击事件延迟问题
 
 import 'styles/normalize.css'
@@ -22,6 +22,7 @@ fastClick.attach(document.body) // 绑定fastClick
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
